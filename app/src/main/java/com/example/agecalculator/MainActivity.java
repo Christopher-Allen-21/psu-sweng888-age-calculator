@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,21 +50,46 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String dobText = mDateOfBirth.getText().toString();
+                String firstName = mFirstName.getText().toString().trim();
+                String lastName = mLastName.getText().toString().trim();
+                String dobText = mDateOfBirth.getText().toString().trim();
+
+                // Check for empty fields
+                if (firstName.isEmpty() || lastName.isEmpty() || dobText.isEmpty()) {
+                    Toast.makeText(
+                            MainActivity.this,
+                            "Please provide values for all fields.",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    return;
+                }
 
                 try {
                     int age = calculateAge(dobText);
 
                     String resultAgeText =
-                            mFirstName.getText().toString() + " " +
-                                    mLastName.getText().toString() +
+                            firstName + " " + lastName +
                                     " is " + age + " years old.";
 
-                    mResultAge.setText(resultAgeText);
-                    mResultAge.setVisibility(View.VISIBLE);
+                    Toast.makeText(
+                            MainActivity.this,
+                            resultAgeText,
+                            Toast.LENGTH_LONG
+                    ).show();
+
                 }
-                catch (Exception e) {
-                    e.printStackTrace();
+                catch (ParseException e) {
+                    String message = e.getMessage();
+
+                    if (message != null && message.contains("future")) {
+                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(
+                                MainActivity.this,
+                                "Please enter a valid date (MM/DD/YYYY).",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
                 }
             }
         });
@@ -80,12 +106,10 @@ public class MainActivity extends AppCompatActivity {
 
         Calendar today = Calendar.getInstance();
 
-        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
-
-        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)) {
-            age--;
+        if (dob.after(today)) {
+            throw new ParseException("Date of birth cannot be in the future.", 0);
         }
 
-        return age;
+        return today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
     }
 }
