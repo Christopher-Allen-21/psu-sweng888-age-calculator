@@ -21,3 +21,13 @@ In this assignment, you will create your first Android app named "Age Calculator
 - Display the calculated age in a Toast.
 - Handle any errors or invalid inputs by displaying an error message in a Toast.
 - Test the app by running it on an Android emulator or physical device.
+
+## Screenshots
+- <img width="423" height="597" alt="Screenshot 2026-06-06 at 8 35 11 AM" src="https://github.com/user-attachments/assets/57aec542-0a9e-49b5-ba9d-fdcd1c89f0c4" />
+- <img width="302" height="476" alt="Screenshot 2026-06-06 at 8 34 19 AM" src="https://github.com/user-attachments/assets/d613d286-9b75-4a20-8a2b-ac448ddcb553" />
+- <img width="423" height="575" alt="Screenshot 2026-06-06 at 8 37 05 AM" src="https://github.com/user-attachments/assets/98cfb162-1c3e-456f-9a14-f0c31414b5f3" />
+- <img width="426" height="570" alt="Screenshot 2026-06-06 at 8 37 50 AM" src="https://github.com/user-attachments/assets/1b49a022-bab8-478f-b7aa-98dd02a698b2" />
+- <img width="428" height="579" alt="Screenshot 2026-06-06 at 8 38 44 AM" src="https://github.com/user-attachments/assets/3c246b07-20de-487d-93cb-c0eb5666d61d" />
+
+
+
