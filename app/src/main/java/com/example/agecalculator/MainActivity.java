@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(
                             MainActivity.this,
                             "Please provide values for all fields.",
-                            Toast.LENGTH_SHORT
+                            Toast.LENGTH_LONG
                     ).show();
                     return;
                 }
@@ -82,12 +82,12 @@ public class MainActivity extends AppCompatActivity {
                     String message = e.getMessage();
 
                     if (message != null && message.contains("future")) {
-                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(
                                 MainActivity.this,
                                 "Please enter a valid date (MM/DD/YYYY).",
-                                Toast.LENGTH_SHORT
+                                Toast.LENGTH_LONG
                         ).show();
                     }
                 }
